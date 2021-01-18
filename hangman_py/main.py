@@ -11,6 +11,10 @@ def hangman():
 	
 	while chance > 0:
 		letter = input('please enter one of alphabet between \"a\" and \"z\": ' )
+		if len(letter) > 1:
+			letter = input('please enter one letter between\"a\" and \"z\": ' )
+			if len(letter) > 1:
+				continue
 		if letter.isalpha():
 			if letter in store:
 				idx = store.index(letter)
@@ -36,8 +40,8 @@ def hangman():
 			chance -= 1
 		
 		if string in answer:
-			answer = input('congraturation!!\nstart again?\nplease enter \'yes\' or \'y\', otherwise enter anykey to exit here ')
-			if answer.lower() == 'yes' and answer.lower() == 'y':
+			answer = input('congraturation!!\nstart again?\nplease enter \'yes\' or \'y\', otherwise enter anykey to exit here: ')
+			if answer.lower() == 'yes' or answer.lower() == 'y':
 				return hangman()
 			else:
 				print('bye bye')
@@ -45,7 +49,7 @@ def hangman():
 
 	if chance == 0:
 		answer = input('lost game\nstart again?\nplease enter \'yes\' or \'y\', otherwise enter anykey to exit here ')
-		if answer == 'yes':
+		if answer.lower() == 'yes' or answer.lower() == 'y':
 			return hangman()
 		else:
 			print('bye bye')

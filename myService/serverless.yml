@@ -86,7 +86,14 @@ functions:
         - http:
             path: create-player-score/{ID}
             method: POST
-            cors: true               
+            cors: true    
+  updatePlayerScore:
+    handler: lambdas/endpoints/updatePlayerScore.handler
+    events:
+        - http:
+            path: update-player-score/{ID}
+            method: PUT
+            cors: true              
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
 #    Check the event documentation for details

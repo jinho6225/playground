@@ -34,12 +34,27 @@ const Dynamo = {
         };
 
         const res = await documentClient.put(params).promise();
-
+        console.log(res, 'res')
+        
         if (!res) {
             throw Error(`There was an error inserting ID of ${data.ID} in table ${TableName}`)
         }
 
         return data;
+    },
+
+    async update({tableName, primaryKey, primaryKeyValue, updateKey, updateValue}) {
+        const params = {
+            TableName: tableName,
+            Key: { [primaryKey]: primaryKeyValue },
+            UpdateExpression: `set ${updateKey} = :updateValue`,
+            ExpressionAttributeValues: {
+                ':updateValue': updateValue,
+            },
+            ReturnValues:"UPDATED_NEW"
+        }
+
+        return documentClient.update(params).promise()
     }
 }
 

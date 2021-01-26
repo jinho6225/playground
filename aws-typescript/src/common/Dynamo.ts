@@ -14,10 +14,11 @@ const Dynamo = {
         const data = await documentClient
             .get(params)
             .promise()
-            
+        
         if (!data || !data.Item) {
             throw Error(`There was an error fetching the data for phoneNumber of ${phoneNumber} from ${TableName}`)
         }        
+        
         return data.Item;
     },
     // //post

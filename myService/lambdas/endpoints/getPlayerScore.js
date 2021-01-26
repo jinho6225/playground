@@ -3,14 +3,13 @@ const Dynamo = require('../common/Dynamo')
 
 const tableName = process.env.tableName
 
-exports.handler = async event => {
-    console.log(event, 'event')
+exports.handler = async (event, context, cb) => {
 
-    if (!event.pathParameters || !event.pathParameters.ID) {
+    if (!event['Details']['Parameters'] || !event['Details']['Parameters'].ID) {
         return Responses._400({message: 'missing the Id from the path'})
     }
 
-    let ID = event.pathParameters.ID
+    let ID = event['Details']['Parameters'].ID.substring(2)
 
     const user = await Dynamo.get(ID, tableName).catch(err => {
         console.log('error in Dynamo Get', err);
@@ -21,6 +20,6 @@ exports.handler = async event => {
     if (!user) {
         return Responses._400({message: 'no User by ID'})
     }
-
-    return Responses._200({user})
+    user.statusCode = 200;
+    return cb(null, user)
 }

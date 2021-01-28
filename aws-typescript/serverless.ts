@@ -1,6 +1,6 @@
 import type { AWS } from '@serverless/typescript';
+import { hello, getUser, createUser } from './src/functions';
 
-import { hello, getUser } from './src/functions';
 const tableName = 'userTable'
 
 const serverlessConfiguration: AWS = {
@@ -41,7 +41,9 @@ const serverlessConfiguration: AWS = {
   functions: { 
     hello,
     getUser,
+    createUser,
   },
+  
   resources: {
     Resources: {
       MyDynamoDbTable: {

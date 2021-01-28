@@ -15,7 +15,6 @@ exports.handler = async (event, context, cb) => {
         console.log('error in Dynamo Get', err);
         return null
     })
-    console.log(user, 'user')
     
     if (!user) {
         return Responses._400({message: 'no User by ID'})

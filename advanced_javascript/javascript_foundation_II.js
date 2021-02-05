@@ -106,3 +106,100 @@ function something() {
   console.log(this, "this");
 }
 console.log(something());
+
+/**
+ * Variable Environment
+ */
+function two() {
+  var isValid;
+}
+
+function one() {
+  var isValid = true;
+  two();
+}
+
+var isValid = false;
+one();
+
+//two() -- undefined
+//one() -- true
+//global() -- false
+
+//it is variable environment /local scope?
+//each execution context has its own variable environment
+
+/**
+ * Scope chain
+ */
+
+var x = "x";
+function findName() {
+  console.log(x); // x
+  var b = "b";
+  return printName();
+}
+
+function printName() {
+  console.log(x); // x
+  var c = "c";
+  return "jinho";
+}
+
+function sayMyName() {
+  var a = "a";
+  return findName();
+}
+
+sayMyName();
+
+/**
+ * In JavaScript our lexical scope (available data + variables where the function was defined)
+ * determines our available variables. Not where the function is called (dynamic scope)
+ */
+
+function sayMyName() {
+  var a = "a";
+  return function findName() {
+    var b = "b";
+    return function printName() {
+      var c = "c";
+      return "jinho";
+    };
+  };
+}
+
+console.log(sayMyName()()());
+
+/**
+ * global scope vs local scope
+ */
+
+function weird() {
+  height = 50;
+  console.log(this, "this");
+  console.log(global, "global");
+  return height;
+}
+console.log(weird());
+
+// function scope
+// vs
+// block scope
+
+function loop() {
+  for (var i = 0; i < 5; i++) {
+    console.log(i);
+  }
+  console.log("final", i);
+}
+console.log(loop());
+
+// function loop2() {
+//   for (let i = 0; i < 5; i++) {
+//     console.log(i);
+//   }
+//   console.log("final2", i);
+// }
+// console.log(loop2());
+// => ReferenceError: i is not defined

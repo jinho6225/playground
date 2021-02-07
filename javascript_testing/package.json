@@ -1,0 +1,19 @@
+{
+  "name": "javascript_testing",
+  "version": "1.0.0",
+  "description": "practive testing",
+  "main": "textUtilities.js",
+  "dependencies": {},
+  "devDependencies": {
+    "@types/jest": "^26.0.20",
+    "chai": "^4.3.0",
+    "jest": "^26.6.3",
+    "mocha": "^8.2.1"
+  },
+  "scripts": {
+    "test": "jest --verbose",
+    "test2": "mocha"
+  },
+  "author": "",
+  "license": "ISC"
+}

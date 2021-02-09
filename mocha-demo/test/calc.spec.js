@@ -68,7 +68,7 @@ describe("spy calculator method callback tests", () => {
   });
 });
 
-describe.only("spy calculator property getter and setter tests", () => {
+describe("spy calculator property getter and setter tests", () => {
   let spy;
   beforeEach(() => {
     spy = sinon.spy(myCalc, "calc", ["get", "set"]);

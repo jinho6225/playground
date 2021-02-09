@@ -4,14 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha 'test/**/async.app.spec.js' --timeout 50000"
+    "test": "mocha"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "chai": "^4.3.0",
-    "mocha": "^8.2.1"
+    "mocha": "^8.2.1",
+    "sinon": "^9.2.4",
+    "sinon-chai": "^3.5.0"
   },
   "dependencies": {
     "axios": "^0.21.1"

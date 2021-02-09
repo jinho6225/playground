@@ -1,0 +1,33 @@
+CHAI - Assertion Library
+
+I - Styles - TDD & BDD - https://www.chaijs.com/​
+
+II - TDD - assert
+
+    const assert = require('chai').assert
+
+III - BDD - expect and should
+
+    const expect = require('chai').expect
+    const should = require('chai').should()
+
+IV - Assert Data
+        const arr = [30, 40, 50]
+        Type - Array
+        Length - 3
+        Equal - [30, 40, 50] // deepEqual vs equal // == vs ===
+        Include - 30, 40, 50
+        Order - [30, 40, 50]
+        item[index] - index 0 = 30 and so on
+        not - 
+
+V - Be Exact as much as possible
+    expect(20).to.be.equal(20) - Correct
+    expect(20).to.be.above(10) - Incorrect
+    expect(20).to.be.below(30) - Incorrect
+
+VI - Avoid unnecessary Assertions
+    expect(array).to.have.length(3) - Correct
+    expect(array).to.not.be.undefined - Unnecessary
+
+VII - Asserts after first failed assertion would not be executed

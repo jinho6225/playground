@@ -38,7 +38,7 @@ describe("Async Code", () => {
   });
 });
 
-describe.only("getUserDataById - Stub Async Code", () => {
+describe("getUserDataById - Stub Async Code", () => {
   let stub;
   beforeEach(() => {
     stub = sinon.stub(user, "getUserDataById");

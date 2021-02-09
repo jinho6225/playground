@@ -1,17 +1,10 @@
 class Calculator {
-  constructor(name) {
-    this.property = name;
+  printHi(msg) {
+    console.log(msg);
   }
-  get calc() {
-    return this.property;
-  }
-  set calc(name) {
-    this.property = name;
-  }
-  myCalc(a, b, callback) {
-    callback(a, b);
-  }
+
   sum(a, b) {
+    this.printHi("Qa Box");
     return a + b;
   }
   sub(a, b) {

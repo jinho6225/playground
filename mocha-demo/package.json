@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha 'test/**/async.app.spec.js' --timeout 50000"
   },
   "keywords": [],
   "author": "",
@@ -12,5 +12,8 @@
   "devDependencies": {
     "chai": "^4.3.0",
     "mocha": "^8.2.1"
+  },
+  "dependencies": {
+    "axios": "^0.21.1"
   }
 }

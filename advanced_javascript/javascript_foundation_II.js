@@ -203,3 +203,132 @@ console.log(loop());
 // }
 // console.log(loop2());
 // => ReferenceError: i is not defined
+
+//IIFE
+//Imediately invoked function expression
+
+(function () {})();
+
+//this
+//this is the object that the function is a property of
+
+const obj = {
+  name: "Billy",
+  sing() {
+    return "lalala" + this.name;
+  },
+  singAgain() {
+    return this.sing() + "!";
+  },
+};
+obj.sing();
+//1: gives methods access to their object
+//2: execute same code for multiple objects
+function importantPerson() {
+  console.log(this.name + "!");
+}
+
+const name = "Sunny";
+const obj1 = { name: "Cassy", importantPerson: importantPerson };
+const obj2 = { name: "Jacob", importantPerson: importantPerson };
+importantPerson(); // Sunny!
+obj1.importantPerson(); //Cassy!
+obj2.importantPerson(); //Jacob!
+
+const c = {
+  hi: function () {
+    console.log("c", this);
+  },
+};
+c.hi(); // c { hi: [function: hi]}
+
+const obj3 = {
+  name: "Billy",
+  sing() {
+    console.log("a", this);
+    var anotherFunc = function () {
+      console.log("b", this);
+    };
+    anotherFunc();
+  },
+};
+
+obj3.sing();
+
+const obj4 = {
+  name: "Billy2",
+  sing() {
+    console.log("a", this);
+    anotherFunc = () => {
+      console.log("b", this);
+    };
+    anotherFunc();
+  },
+};
+
+obj4.sing();
+//arrow function lexically bind
+
+const obj5 = {
+  name: "Billy3",
+  sing() {
+    console.log("a", this);
+    var anotherFunc = function () {
+      console.log("b", this);
+    };
+    return anotherFunc.bind(this);
+  },
+};
+obj5.sing();
+obj5.sing()();
+
+const obj6 = {
+  name: "Billy4",
+  sing() {
+    console.log("a", this);
+    var self = this;
+    var anotherFunc = function () {
+      console.log("b", self);
+    };
+    return anotherFunc.bind(this);
+  },
+};
+obj6.sing();
+
+//bind and currying
+
+function multiply(a, b) {
+  return a * b;
+}
+
+var multipleByTwo = multiply.bind(this, 2);
+console.log(multipleByTwo(4));
+
+var multipleByThree = multiply.bind(this, 3);
+console.log(multipleByThree(4));
+
+var b = {
+  name: "jay",
+  say() {
+    console.log(this);
+  },
+};
+b.say(); // {name:'jay', function}
+var c = {
+  name: "jay",
+  say() {
+    return function () {
+      console.log(this);
+    };
+  },
+};
+c.say()(); // window or globak
+var d = {
+  name: "jay",
+  say() {
+    return () => console.log(this);
+  },
+};
+d.say()(); // {name:'jay', function}
+
+// context vs scope

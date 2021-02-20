@@ -314,7 +314,7 @@ var b = {
   },
 };
 b.say(); // {name:'jay', function}
-var c = {
+var cc = {
   name: "jay",
   say() {
     return function () {
@@ -322,7 +322,7 @@ var c = {
     };
   },
 };
-c.say()(); // window or globak
+cc.say()(); // window or globak
 var d = {
   name: "jay",
   say() {

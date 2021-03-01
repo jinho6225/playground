@@ -74,3 +74,9 @@ console.log(Elf instanceof peter); // false
 const sam2 = new Elf("Sam", "fire");
 console.log(peter.attack());
 console.log(sam2.attack());
+
+//4 Pillars of OOP
+// Encapsulation;
+// Abstraction;
+// Inheritance;
+// Polymorphism; simply method overwriting

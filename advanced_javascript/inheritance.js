@@ -1,4 +1,5 @@
 class Character {
+  #age = 54; //private
   constructor(name, weapon) {
     this.name = name;
     this.weapon = weapon;
@@ -6,12 +7,18 @@ class Character {
   attack() {
     return `attack with ${this.weapon}`;
   }
+  introduce() {
+    return `hello i am ${this.#age}`;
+  }
 }
 
 class Elf extends Character {
   constructor(name, weapon, type) {
     super(name, weapon);
     this.type = type;
+  }
+  attack() {
+    return `whooooooa`;
   }
 }
 

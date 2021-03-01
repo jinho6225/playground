@@ -11,9 +11,17 @@
 // elf.name;
 
 //factory function
+function createElf(name, weapon) {
+  return {
+    name,
+    weapon,
+    attack() {
+      return "attack with " + weapon;
+    },
+  };
+}
 
 // Object.create()
-
 // const elfFunctions = {
 //   attack() {
 //     return "attack with " + this.weapon;
@@ -33,17 +41,36 @@
 // console.log(sam.attack());
 
 // Constructor Functions
+// function Elf(name, weapon) {
+//   this.name = name;
+//   this.weapon = weapon;
+// }
 
-function Elf(name, weapon) {
-  this.name = name;
-  this.weapon = weapon;
+// Elf.prototype.attack = function () {
+//   return "attack with " + this.weapon;
+// };
+
+// const peter2 = new Elf("Peter", "stone");
+// const sam2 = new Elf("Sam", "fire");
+// console.log(peter2.attack());
+// console.log(sam2.attack());
+
+//ES6 Class <= syntatical sugar
+class Elf {
+  constructor(name, weapon) {
+    this.name = name;
+    this.weapon = weapon;
+  }
+
+  attack() {
+    return "attack with " + this.weapon;
+  }
 }
 
-Elf.prototype.attack = function () {
-  return "attack with " + this.weapon;
-};
+const peter = new Elf("Peter", "stone"); //peter is instance of Elf
+console.log(peter instanceof Elf); // true
+console.log(Elf instanceof peter); // false
 
-const peter2 = new Elf("Peter", "stone");
 const sam2 = new Elf("Sam", "fire");
-console.log(peter2.attack());
+console.log(peter.attack());
 console.log(sam2.attack());

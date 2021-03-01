@@ -82,6 +82,9 @@ console.log(one);
 
 // callMeMaybe();
 
+//advantage of closure
+// memory efficient, encapsulation
+
 // Memory efficient
 
 // function heavyDuty(index) {

@@ -2,6 +2,12 @@ const array = [];
 array.__proto__; // array
 array.__proto__.__proto__; // object
 
+function a() {}
+a.__proto__; //function[native]
+a.__proto__.__proto__; // object
+
+//even if javascript has class keyword, it is syntatical sugar
+
 //prototypal Inheritance
 //even if javascript has class keyword, it is syntatical sugar
 let dragon = {

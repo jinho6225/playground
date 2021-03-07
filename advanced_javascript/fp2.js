@@ -45,3 +45,14 @@ const curryiedMultiplyBy5 = curryiedMultiply(5);
 
 console.log(curryiedMultiply(5)(3));
 console.log(curryiedMultiplyBy5(4));
+
+//Partial Application
+
+//currying case
+const multiply2 = (a, b, c) => a * b * c;
+const curryiedMultiply2 = (a) => (b) => (c) => a * b * c;
+console.log(curryiedMultiply2(3)(4)(10));
+// partial application case
+const multiply3 = (a, b, c) => a * b * c;
+const partialMultiplyBy5 = multiply3.bind(null, 5);
+console.log(partialMultiplyBy5(8, 3));

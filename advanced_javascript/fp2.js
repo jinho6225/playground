@@ -56,3 +56,16 @@ console.log(curryiedMultiply2(3)(4)(10));
 const multiply3 = (a, b, c) => a * b * c;
 const partialMultiplyBy5 = multiply3.bind(null, 5);
 console.log(partialMultiplyBy5(8, 3));
+
+// Compose
+const compose = (f, g) => (data) => f(g(data));
+const mutiplyBy3 = (num) => num * 3;
+const makePositive = (num) => Math.abs(num);
+
+const multiplyBy3AndAbsolute = compose(mutiplyBy3, makePositive);
+console.log(multiplyBy3AndAbsolute(-50), "compose");
+
+// Pipe -> oppsite order for fn (left to right)
+const pipe = (f, g) => (data) => g(f(data));
+
+//arity

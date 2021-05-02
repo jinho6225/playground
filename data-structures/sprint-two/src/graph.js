@@ -13,34 +13,38 @@ const graph3 = {
     2   -   0
   /   \ 
 1  -   3
-
  */
-
 
 
 // Instantiate a new graph
 var Graph = function() {
-    this.node = {}
+    this.adjacentBox = {}
 };
 
 // Add a node to the graph, passing in the node's value.
 Graph.prototype.addNode = function(node) {
+    this.adjacentBox[node] = []
 };
 
 // Return a boolean value indicating if the value passed to contains is represented in the graph.
-Graph.prototype.contains = function(node) {
+Graph.prototype.contains = function(node) {    
+    return Object.keys(this.adjacentBox).includes(String(node))
 };
 
 // Removes a node from the graph.
 Graph.prototype.removeNode = function(node) {
+    delete this.adjacentBox[node]
 };
 
 // Returns a boolean indicating whether two specified nodes are connected.  Pass in the values contained in each of the two nodes.
 Graph.prototype.hasEdge = function(fromNode, toNode) {
+    return this.adjacentBox[fromNode].includes(toNode)
 };
 
 // Connects two nodes in a graph by adding an edge between them.
 Graph.prototype.addEdge = function(fromNode, toNode) {
+    this.adjacentBox[fromNode].push(toNode)
+    this.adjacentBox[toNode].push(fromNode)
 };
 
 // Remove an edge between any two specified (by value) nodes.

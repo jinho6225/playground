@@ -33,6 +33,10 @@ Graph.prototype.contains = function(node) {
 
 // Removes a node from the graph.
 Graph.prototype.removeNode = function(node) {
+    for (let i = 0; i < this.adjacentBox[node].length; i++) {
+        let idx = this.adjacentBox[this.adjacentBox[node][i]].indexOf(node)
+        this.adjacentBox[this.adjacentBox[node][i]].splice(idx, 1)
+    }
     delete this.adjacentBox[node]
 };
 
@@ -49,10 +53,15 @@ Graph.prototype.addEdge = function(fromNode, toNode) {
 
 // Remove an edge between any two specified (by value) nodes.
 Graph.prototype.removeEdge = function(fromNode, toNode) {
+    let idx1 = this.adjacentBox[fromNode].indexOf(toNode)
+    this.adjacentBox[fromNode].splice(idx1, 1)
+    let idx2 = this.adjacentBox[toNode].indexOf(fromNode)
+    this.adjacentBox[toNode].splice(idx2, 1)    
 };
 
 // Pass in a callback which will be executed on each node of the graph.
 Graph.prototype.forEachNode = function(cb) {
+    Object.keys(this.adjacentBox).forEach(val => cb(val))
 };
 
 /*
